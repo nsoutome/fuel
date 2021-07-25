@@ -7,7 +7,7 @@
 ----|---- 
 | OS | Amazon Linux2 EC2|
 | Web | Apache/2.4.48 |
-| 　MySQL | 5.7.35 |
+| MySQL | 5.7.35 |
 | PHP | PHP Version 7.4.21 |
 | Fuel | 1.8.2 |
 
