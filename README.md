@@ -69,13 +69,13 @@ mysql -h localhost -u user01 -pPassword-123 test_db;
 - URL
   - http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/welcome/index/foo_param
 - ソースコード
-　　　　- https://github.com/nsoutome/fuel/blob/master/fuel/app/classes/controller/welcome.php
+  - https://github.com/nsoutome/fuel/blob/master/fuel/app/classes/controller/welcome.php
 
 ### 分析API(スタブ)
 - 処理概要
   - ランダムで分析結果を返却する。
-- URL
-　　　　- ss
+- URL  
+  - http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/api/analysis.json
 - 呼び出し結果
 ```
 curl -d image_path=test.png http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/api/analysis.json
@@ -83,3 +83,18 @@ curl -d image_path=test.png http://ec2-54-250-192-112.ap-northeast-1.compute.ama
 ```
 - ソースコード
   - https://github.com/nsoutome/fuel/blob/master/fuel/app/classes/controller/api.php
+
+### 結果登録API
+- 処理概要
+  - 分析APIレスポンスをDBに登録する。
+- URL  
+  - http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/api/regist.json
+- 呼び出し結果
+```
+curl -d "image_path=test.png&success=true" http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/api/regist.json
+[137,1]
+```
+- ソースコード
+  - https://github.com/nsoutome/fuel/blob/master/fuel/app/classes/controller/api.php
+
+
