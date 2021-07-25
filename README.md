@@ -58,7 +58,28 @@ mysql -h localhost -u user01 -pPassword-123 test_db;
 ```
 
 ## Webアプリケーション
-- phpinfo 
+### phpinfo 
   - http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/phpinfo.php
-- 
+
+### メイン処理
+- 処理概要
+  - 分析API(スタブ)をcallする
+  - レスポンスをDBに登録するAPIをcallする
+  - DB登録内容を画面に表示する
+- URL
   - http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/welcome/index/foo_param
+- ソースコード
+　　　　- https://github.com/nsoutome/fuel/blob/master/fuel/app/classes/controller/welcome.php
+
+### 分析API(スタブ)
+- 処理概要
+  - ランダムで分析結果を返却する。
+- URL
+　　　　- ss
+- 呼び出し結果
+```
+curl -d image_path=test.png http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/api/analysis.json
+{"success":"true","message":"success","estimated_data":{"class":1,"confidence":0.111}}
+```
+- ソースコード
+  - https://github.com/nsoutome/fuel/blob/master/fuel/app/classes/controller/api.php
