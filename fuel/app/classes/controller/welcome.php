@@ -30,16 +30,30 @@ class Controller_Welcome extends Controller
 	 * @access  public
 	 * @return  Response
 	 */
-	public function action_index($name = "default")
+	public function action_index($image_path = "default")
 	{
+		$request_timestamp = time();
+
+		$aws_public_domain = "http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/";
+
+		// 分析API call
+		$params = array("image_path" => $image_path);
+		$url = $aws_public_domain . "/index.php/api/analysis.json";
+		$response = $this->call_api($params, $url);
+
+		// データ登録 API call
+		$params = array();
+		$params["image_path"] = $image_path;
+		$params["success"]    = $response->success;
+		$params["message"]    = $response->message;
+		$params["class"]      = $response->estimated_data->class;
+		$params["confidence"] = $response->estimated_data->confidence;
+		$params["request_timestamp"]  = $request_timestamp;
+		$params["response_timestamp"] = time();
+
+		$url = $aws_public_domain . "/index.php/api/regist.json";
+		$insert_result = $this->call_api($params, $url);
 		$data = array();
-		$data["name"] = $name;
-
-		// API call
-		$call_result = $this->call_ai($name);
-
-		// データ登録
-		$insert_result = DB::insert(self::table_name)->set($call_result)->execute();
 		if($insert_result[1] > 0){
 			$data["insert_result"] = "成功";
 		} else {
@@ -49,29 +63,10 @@ class Controller_Welcome extends Controller
 		$query= DB::select()->from(self::table_name)->order_by('id', 'desc');
 		$results=$query->execute();
 
-
-//		$query = Contents::get_list(10, 0);
-//		print_r($query->as_array());
-
-		// $data['results'] = $results;
+		$data["image_path"] = $image_path;
 		$data['results']    = $results->as_array();
 		
-		print_r($data);
-
-		// return Response::forge(View::forge('welcome/index'));
 		return Response::forge(View::forge('welcome/index', $data));
-	}
-
-	/**
-	 * A typical "Hello, Bob!" type example.  This uses a Presenter to
-	 * show how to use them.
-	 *
-	 * @access  public
-	 * @return  Response
-	 */
-	public function action_hello()
-	{
-		return Response::forge(Presenter::forge('welcome/hello'));
 	}
 
 	/**
@@ -85,17 +80,25 @@ class Controller_Welcome extends Controller
 		return Response::forge(Presenter::forge('welcome/404'), 404);
 	}
 
-	// call api スタブ
-	private function call_ai($name)
+	// call api
+	private function call_api($params, $curl)
 	{
-		$data = array(	"image_path"         => $name,
-				"success"            => "true",
-				"message"            => "success",
-				"class"              => 3,
-				"confidence"         => 0.8683,
-				"request_timestamp"  => time(),
-				"response_timestamp" => time()
-		);
-		return $data;
+		$curl=curl_init($curl);
+		curl_setopt($curl,CURLOPT_POST, TRUE);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+		curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, FALSE);  // オレオレ証明書対策
+		curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, FALSE);  // 
+		curl_setopt($curl,CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($curl,CURLOPT_COOKIEJAR,      'cookie');
+		curl_setopt($curl,CURLOPT_COOKIEFILE,     'tmp');
+		curl_setopt($curl,CURLOPT_FOLLOWLOCATION, TRUE); // Locationヘッダを追跡
+
+		// URLの情報を取得
+		$response = curl_exec($curl);
+
+		// セッションを終了
+		curl_close($curl);
+
+		return json_decode($response);
 	}
 }

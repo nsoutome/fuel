@@ -40,7 +40,7 @@
 
 
 
-			<h1>入力パラメータ <?php echo $name; echo $insert_result; ?></h1>
+			<h1>入力パラメータ <?php echo $image_path . '<br>'; echo "登録結果 : " . $insert_result; ?></h1>
 			<?php
 				foreach ($results as $key => $result) {
 					print $result["id"]                 . '&nbsp;';
