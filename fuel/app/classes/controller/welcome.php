@@ -34,7 +34,7 @@ class Controller_Welcome extends Controller
 	{
 		$request_timestamp = time();
 
-		$aws_public_domain = "http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/";
+		$aws_public_domain = "http://ec2-35-74-150-19.ap-northeast-1.compute.amazonaws.com/";
 
 		// 分析API call
 		$params = array("image_path" => $image_path);

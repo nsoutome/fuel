@@ -47,10 +47,10 @@
 					print $result["image_path"]         . '&nbsp;';
 					print $result["success"]            . '&nbsp;';
 					print $result["message"]            . '&nbsp;';
-					print $result["class"]              . '&nbsp;';
-					print $result["confidence"]         . '&nbsp;';
-					print $result["request_timestamp"]  . '&nbsp;';
-					print $result["response_timestamp"] . '<br>';
+					print $result["class"]              . '&nbsp;&nbsp;';
+					print $result["confidence"]         . '&nbsp;&nbsp;';
+					print date('Y/m/d H:i:s', $result["request_timestamp"])  . '&nbsp;&nbsp;';
+					print date('Y/m/d H:i:s', $result["response_timestamp"]) . '<br>';
 				}
 
 				print('<br><br><br>');
