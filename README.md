@@ -100,5 +100,14 @@ curl -d "image_path=test.png&success=true" http://ec2-54-250-192-112.ap-northeas
 # 参考文献
 
 ## PHP, Fuel関連
-- https://qiita.com/nagahama/items/2fdc820791bee5d564ca
+- AWS EC2(Amazon Linux)にPHP7.4をインストール
+  - https://qiita.com/nagahama/items/2fdc820791bee5d564ca
+- CentOS7のPHPを5.6／7.0／7.1／7.2／7.3系にバージョンアップする
+  - https://qiita.com/heimaru1231/items/84d0beca81ca5fdcffd0
+  - 間違って最初にPHP5をインストールしてしまい、7.4にバージョンアップ
+-  AWS EC2 で FuelPHP が動作するまで
+  - https://seckie.hatenablog.com/entry/2014/05/07/205310
+  - 情報古い!! PHP7系だと動かなかったりする。
+  - 
+
 
