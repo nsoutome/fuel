@@ -11,6 +11,9 @@
 | PHP | PHP Version 7.4.21 |
 | Fuel | 1.8.2 |
 
+## パブリックドメイン(ElasticIP　使用)
+- http://ec2-35-74-150-19.ap-northeast-1.compute.amazonaws.com/
+
 ## DB設定
 ```
 mysql> show databases;
@@ -59,7 +62,7 @@ mysql -h localhost -u user01 -pPassword-123 test_db;
 
 ## Webアプリケーション
 ### phpinfo 
-  - http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/phpinfo.php
+  - http://ec2-35-74-150-19.ap-northeast-1.compute.amazonaws.com/phpinfo.php
 
 ### メイン処理
 - 処理概要
@@ -67,7 +70,7 @@ mysql -h localhost -u user01 -pPassword-123 test_db;
   - レスポンスをDBに登録するAPIをcallする
   - DB登録内容を画面に表示する
 - URL
-  - http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/welcome/index/foo_param
+  - http://ec2-35-74-150-19.ap-northeast-1.compute.amazonaws.com/index.php/welcome/index/foo_param
 - ソースコード
   - https://github.com/nsoutome/fuel/blob/master/fuel/app/classes/controller/welcome.php
 
@@ -75,10 +78,10 @@ mysql -h localhost -u user01 -pPassword-123 test_db;
 - 処理概要
   - ランダムで分析結果を返却する。
 - URL  
-  - http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/api/analysis.json
+  - http://ec2-35-74-150-19.ap-northeast-1.compute.amazonaws.com/index.php/api/analysis.json
 - 呼び出し結果
 ```
-curl -d image_path=test.png http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/api/analysis.json
+curl -d image_path=test.png http://ec2-35-74-150-19.ap-northeast-1.compute.amazonaws.com/index.php/api/analysis.json
 {"success":"true","message":"success","estimated_data":{"class":1,"confidence":0.111}}
 ```
 - ソースコード
@@ -88,10 +91,10 @@ curl -d image_path=test.png http://ec2-54-250-192-112.ap-northeast-1.compute.ama
 - 処理概要
   - 分析APIレスポンスをDBに登録する。
 - URL  
-  - http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/api/regist.json
+  - http://ec2-35-74-150-19.ap-northeast-1.compute.amazonaws.com/index.php/api/regist.json
 - 呼び出し結果
 ```
-curl -d "image_path=test.png&success=true" http://ec2-54-250-192-112.ap-northeast-1.compute.amazonaws.com/index.php/api/regist.json
+curl -d "image_path=test.png&success=true" http://ec2-35-74-150-19.ap-northeast-1.compute.amazonaws.com/index.php/api/regist.json
 [137,1]
 ```
 - ソースコード
