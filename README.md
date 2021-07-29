@@ -97,4 +97,8 @@ curl -d "image_path=test.png&success=true" http://ec2-54-250-192-112.ap-northeas
 - ソースコード
   - https://github.com/nsoutome/fuel/blob/master/fuel/app/classes/controller/api.php
 
+# 参考文献
+
+## PHP, Fuel関連
+- https://qiita.com/nagahama/items/2fdc820791bee5d564ca
 
