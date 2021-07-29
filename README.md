@@ -11,7 +11,7 @@
 | PHP | PHP Version 7.4.21 |
 | Fuel | 1.8.2 |
 
-## パブリックドメイン(ElasticIP　使用)
+## パブリックドメイン(ElasticIP使用)
 - http://ec2-35-74-150-19.ap-northeast-1.compute.amazonaws.com/
 
 ## DB設定
