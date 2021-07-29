@@ -108,6 +108,28 @@ curl -d "image_path=test.png&success=true" http://ec2-54-250-192-112.ap-northeas
 -  AWS EC2 で FuelPHP が動作するまで
   - https://seckie.hatenablog.com/entry/2014/05/07/205310
   - 情報古い!! PHP7系だと動かなかったりする。
-  - 
+- FuelPHP フレームワークをインストール
+  - https://cloudear.jp/blog/?p=354
+- FuelPHP フレームワーク超入門
+  - https://cloudear.jp/blog/?p=400
+- DB接続系のヒントになった文献
+  - https://kenji-s.hatenadiary.org/entry/20111109/1320827056
+  - https://qiita.com/kazukichi/items/2a6e242091c5f485b976
+- FuelPHPのDB基本と返り値
+  - https://qiita.com/Quantum/items/f090fd9081d2d76581ed
+
+## MySQL
+- AWS EC2 AmazonLinux2 MySQLをインストールする
+  - https://qiita.com/miriwo/items/eb09c065ee9bb7e8fe06
+- MySQLをバージョンアップした際にsql_modeが変更してしまう問題点の解決
+  - https://qiita.com/miki_sin/items/c5277a0fd5ddd4677dd8
+- MySQLでcharacter_set_databaseがlatin1になってしまう問題の対応方法
+  - https://interu.hatenablog.com/entry/2013/11/19/120322
+
+
+
+
+
+## 
 
 
