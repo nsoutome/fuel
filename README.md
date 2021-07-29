@@ -1,4 +1,4 @@
-# FUEL TRIAL
+# FuelPHP Trial
 
 ## 環境
 - 基本的に馴染みのあるバージョンを選定
@@ -128,11 +128,4 @@ curl -d "image_path=test.png&success=true" http://ec2-35-74-150-19.ap-northeast-
   - https://qiita.com/miki_sin/items/c5277a0fd5ddd4677dd8
 - MySQLでcharacter_set_databaseがlatin1になってしまう問題の対応方法
   - https://interu.hatenablog.com/entry/2013/11/19/120322
-
-
-
-
-
-## 
-
 
